@@ -1,0 +1,39 @@
+main {
+    min-height:70vh;
+    padding-bottom: 60px; }
+  
+  footer {
+    min-height:5vh;
+
+    position: relative;
+    width: 100%;
+  }
+header{
+    min-height: 10vh;
+}
+
+.logo{
+    height: 40px;
+}
+
+.navbar-custom {
+    background: linear-gradient(to right, yellow, blue, red);
+
+  }
+  .risk-level-1 {
+    background-color: blue;
+    color: white;
+}
+
+.risk-level-2 {
+            background-color: green;
+            color: white;
+}
+  
+.card{
+    width: 300px;
+}
+
+.card-img-top {
+    height: 200px;
+} 
