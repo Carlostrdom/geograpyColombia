@@ -138,37 +138,80 @@ let img = [
     }
 
 ]
+
 document.addEventListener("DOMContentLoaded", () => {
+    const departmentsContainer = document.getElementById("departments");
+    const filterNameInput = document.getElementById("filter-name");
+    const filterPopulationSelect = document.getElementById("filter-population");
+
+    let departmentsData = [];
+
+    // Fetch y procesamiento inicial
     fetch("https://api-colombia.com/api/v1/Department")
         .then((response) => response.json())
         .then((data) => {
-            let departmentsContainer = document.getElementById("departments");
-
-            // Generar el HTML para todas las tarjetas usando map y join
-            let tarjetasHTML = data.map(department => {
-                // Buscar la imagen correspondiente en el arreglo img
-                let imageObj = img.find(image => image.id === department.id);
-                let imageUrl = imageObj ? imageObj.img : "./assets/recursos-img/colombia.jpg"; // Usar imagen por defecto si no se encuentra una correspondiente
-
-                return `
-                    <div class="card">
-                        <img src="${imageUrl}" class="card-img-top" alt="${department.name}" style="object-fit: cover;"/>
-                        <div class="card-body">
-                            <h5 class="card-title">Departamento: ${department.name}</h5>
-                            <p>Municipios: ${department.municipalities}</p>
-                            <p>Población: ${department.population}</p>
-                          
-                            <div class="d-flex justify-content-between align-items-center">
-                                <p>Más detalles</p>
-                                <a href="./details.html?id=${department.id}" class="btn btn-primary">Detalles</a>
-                            </div>
-                        </div>
-                    </div>
-                `;
-            }).join(''); // Unir todos los elementos del array en un solo string
-
-            // Establecer el contenido HTML del contenedor de departamentos
-            departmentsContainer.innerHTML = tarjetasHTML;
+            departmentsData = data;
+            displayDepartments(data);
         })
         .catch((error) => console.error("Error fetching departments:", error));
+
+    // Función para mostrar departamentos
+    const displayDepartments = (departments) => {
+        let tarjetasHTML = departments.map(department => {
+            let imageObj = img.find(image => image.id === department.id);
+            let imageUrl = imageObj ? imageObj.img : "./assets/recursos-img/colombia.jpg";
+
+            return `
+                <div class="card">
+                    <img src="${imageUrl}" class="card-img-top" alt="${department.name}" style="object-fit: cover;"/>
+                    <div class="card-body">
+                        <h5 class="card-title">Departamento: ${department.name}</h5>
+                        <p>Municipios: ${department.municipalities}</p>
+                        <p>Población: ${department.population}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <p>Más detalles</p>
+                            <a href="./details.html?id=${department.id}" class="btn btn-primary">Detalles</a>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }).join('');
+
+        departmentsContainer.innerHTML = tarjetasHTML;
+    };
+
+    // Filtrar por nombre
+    filterNameInput.addEventListener("input", () => {
+        const filterName = filterNameInput.value.toLowerCase();
+        const filteredDepartments = departmentsData.filter(department =>
+            department.name.toLowerCase().includes(filterName)
+        );
+        applyFilters(filteredDepartments);
+    });
+
+    // Filtrar por población
+    filterPopulationSelect.addEventListener("change", () => {
+        applyFilters(departmentsData);
+    });
+
+    // Función para aplicar todos los filtros
+    const applyFilters = (departments) => {
+        const populationFilter = filterPopulationSelect.value;
+        let filteredDepartments = departments;
+
+        if (populationFilter) {
+            filteredDepartments = filteredDepartments.filter(department => {
+                const population = department.population;
+                if (populationFilter === "low") {
+                    return population < 1000000;
+                } else if (populationFilter === "medium") {
+                    return population >= 1000000 && population <= 2000000;
+                } else if (populationFilter === "high") {
+                    return population > 2000000;
+                }
+            });
+        }
+
+        displayDepartments(filteredDepartments);
+    };
 });

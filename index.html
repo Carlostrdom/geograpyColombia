@@ -63,12 +63,29 @@
           </p>
         </div>
 
+        <!-- Campos de filtro -->
+        <div class="d-flex justify-content-center mb-4">
+          <input
+            type="text"
+            id="filter-name"
+            class="form-control w-25 me-2"
+            placeholder="Filtrar por nombre"
+          />
+          <select id="filter-population" class="form-select w-25">
+            <option value="">Todos los niveles de población</option>
+            <option value="low">Menos de 1,000,000</option>
+            <option value="medium">1,000,000 - 2,000,000</option>
+            <option value="high">Más de 2,000,000</option>
+          </select>
+        </div>
+
         <div
           id="departments"
           class="container-fluid d-flex mt-3 flex-wrap justify-content-center gap-4"
         ></div>
       </div>
     </main>
+
     <footer
       class="d-flex navbar-custom text-white justify-content-between mt-5 p-3"
     >
