@@ -1,17 +1,28 @@
-main {
-    min-height:70vh;
-    padding-bottom: 60px; }
-  
-  footer {
-    min-height:5vh;
-
-    position: relative;
-    width: 100%;
-  }
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh; /* Asegura que el body cubra al menos el 100% de la altura de la ventana */
+  background: url('./assets/recursos-img/paisaje.jpeg') no-repeat center center fixed; /* Fondo de imagen */
+  background-size: cover;
+}
 header{
-    min-height: 10vh;
+  min-height: 10vh;
 }
 
+
+main {
+    min-height:71vh;
+    padding-bottom: 60px; }
+    
+
+  
+footer {
+  min-height:5vh;
+
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
 .logo{
     height: 40px;
 }
@@ -20,7 +31,7 @@ header{
     background: linear-gradient(to right, yellow, blue, red);
 
   }
-  .risk-level-1 {
+.risk-level-1 {
     background-color: blue;
     color: white;
 }
@@ -31,7 +42,7 @@ header{
 }
   
 .card{
-    width: 300px;
+    width: 250px;
 }
 
 .card-img-top {

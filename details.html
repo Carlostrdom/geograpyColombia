@@ -10,8 +10,7 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
-
-    <title>colombia</title>
+    <title>Colombia</title>
   </head>
   <body>
     <header>
@@ -38,8 +37,14 @@
                   >Home</a
                 >
               </li>
+
               <li class="nav-item">
-                <a class="nav-link" href="./details.html">details</a>
+                <a
+                  class="nav-link active"
+                  aria-current="page"
+                  href="./invasive-species.html"
+                  >Species</a
+                >
               </li>
             </ul>
           </div>
@@ -48,11 +53,12 @@
     </header>
     <main>
       <div class="container-fluid">
-        <div id="department-details" class="mb-4">
-          <!-- Aquí se mostrará la información detallada del departamento -->
-        </div>
+        <div
+          id="department-details"
+          class="text-white w-40 p-3 bg-dark bg-opacity-75 rounded-3"
+        ></div>
 
-        <div class="mb-3 d-flex align-items-center">
+        <div class="mb-3 p-2 d-flex align-items-center">
           <input
             id="search-input"
             type="text"
@@ -62,40 +68,41 @@
           <button id="search-button" class="btn btn-primary">Buscar</button>
         </div>
 
-        <div class="d-flex align-items-center mb-4">
+        <div
+          class="d-flex p-2 col-7 bg-dark rounded-3 bg-opacity-75 text-white"
+        >
+          <p class="col-3">Mostrar informacion por :</p>
+
           <div class="form-check me-3">
             <input
               class="form-check-input"
               type="checkbox"
               id="city-checkbox"
-              checked
             />
-            <label class="form-check-label" for="city-checkbox">
-              Mostrar Ciudades
-            </label>
+            <label class="form-check-label" for="city-checkbox">Ciudades</label>
           </div>
           <div class="form-check">
             <input
               class="form-check-input"
               type="checkbox"
               id="natural-area-checkbox"
-              checked
             />
             <label class="form-check-label" for="natural-area-checkbox">
-              Mostrar Áreas Naturales
-            </label>
+              Áreas Naturales</label
+            >
           </div>
         </div>
 
         <div
           id="cards-container"
           class="container-fluid d-flex mt-3 flex-wrap justify-content-center gap-4"
-        >
-          <!-- Aquí se cargarán las tarjetas de las ciudades y áreas naturales -->
-        </div>
+        ></div>
       </div>
     </main>
-    <footer class="d-flex bg-dark text-white justify-content-between mt-5 p-3">
+
+    <footer
+      class="d-flex navbar-custom text-white justify-content-between mt-5 p-3"
+    >
       <div class="container-fluid">
         <div class="row">
           <div class="col-lg-10 col-md-9 d-flex align-items-center">
@@ -132,11 +139,12 @@
         </div>
       </div>
     </footer>
-    <script src="./details.js"></script>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
+    <script src="./details.js"></script>
   </body>
 </html>

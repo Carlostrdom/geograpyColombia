@@ -50,13 +50,19 @@
     </header>
     <main>
       <div class="container-fluid">
-        <h1 class="text-center mb-4">Especies Invasoras</h1>
+        <div class="justify-content-center col-12 d-flex">
+          <h1
+            class="text-center text-white col-4 bg-dark bg-opacity-75 rounded-3 mb-4"
+          >
+            Especies Invasoras
+          </h1>
+        </div>
 
-        <table class="table-bordered border-primary">
+        <table class="table-bordered">
           <thead
             class="border-dark text-center justify-content-center table-hover"
           >
-            <tr>
+            <tr class="bg-secondary-subtle">
               <th>Nombre</th>
               <th>Nombre Científico</th>
               <th>Impacto</th>
@@ -65,9 +71,7 @@
               <th>Imagen</th>
             </tr>
           </thead>
-          <tbody id="especies-tbody">
-            <!-- Las filas se agregarán aquí -->
-          </tbody>
+          <tbody id="especies-tbody"></tbody>
         </table>
       </div>
     </main>

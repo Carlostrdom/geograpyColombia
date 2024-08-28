@@ -1,18 +1,15 @@
-document.addEventListener("DOMContentLoaded", function () {
-    let apiURL = "https://api-colombia.com/api/v1/InvasiveSpecie";
 
-    fetch(apiURL)
-        .then(response => response.json())
-        .then(data => {
-            let tbody = document.getElementById("especies-tbody");
+let apiURL = "https://api-colombia.com/api/v1/InvasiveSpecie";
 
-            for (let i = 0; i < data.length; i++) {
-                let especie = data[i];
-                let tabla = document.createElement("tr");
+fetch(apiURL)
+    .then(response => response.json())
+    .then(data => {
+        let tbody = document.getElementById("especies-tbody");
 
-
-
-                tabla.innerHTML = `
+        for (let i = 0; i < data.length; i++) {
+            let especie = data[i];
+            let tabla = document.createElement("tr");
+            tabla.innerHTML = `
               
                 <td class="text-center border border-dark justify-content-center" >${especie.name}</td>
                 <td class="text-center border  border-dark justify-content-center">${especie.scientificName}</td>
@@ -23,14 +20,14 @@ document.addEventListener("DOMContentLoaded", function () {
                  
                 `;
 
-                if (especie.riskLevel === 1) {
-                    tabla.classList.add("risk-level-1");
-                } else if (especie.riskLevel === 2) {
-                    tabla.classList.add("risk-level-2");
-                }
-
-                tbody.appendChild(tabla);
+            if (especie.riskLevel === 1) {
+                tabla.classList.add("risk-level-1");
+            } else if (especie.riskLevel === 2) {
+                tabla.classList.add("risk-level-2");
             }
-        })
-        .catch(error => console.error("Error al obtener los datos de la API:", error));
-});
+
+            tbody.appendChild(tabla);
+        }
+    })
+    .catch(error => console.error("Error al obtener los datos de la API:", error));
+

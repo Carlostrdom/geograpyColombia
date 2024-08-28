@@ -54,22 +54,17 @@
     </header>
     <main>
       <div class="container-fluid">
-        <div class="mt-4 mb-5 text-center">
-          <h1>Descubre Colombia</h1>
-          <p>
-            Colombia es un país de América del Sur, conocido por su rica cultura
-            y biodiversidad. A continuación, se presentan los departamentos que
-            conforman este hermoso país:
-          </p>
-        </div>
+        <div
+          id="country-info"
+          class="text-white w-40 p-4 bg-dark bg-opacity-75 rounded-3"
+        ></div>
 
-        <!-- Campos de filtro -->
-        <div class="d-flex justify-content-center mb-4">
+        <div class="d-flex justify-content-center p-4 mb-4">
           <input
             type="text"
             id="filter-name"
             class="form-control w-25 me-2"
-            placeholder="Filtrar por nombre"
+            placeholder="Nombre del departamento"
           />
           <select id="filter-population" class="form-select w-25">
             <option value="">Todos los niveles de población</option>
