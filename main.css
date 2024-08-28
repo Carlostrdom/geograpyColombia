@@ -40,11 +40,27 @@ footer {
             background-color: green;
             color: white;
 }
-  
+.risk-level-0 {
+  background-color: white; /* O el color de fondo predeterminado */
+}
 .card{
     width: 250px;
+    
 }
 
 .card-img-top {
     height: 200px;
 } 
+
+.my-card {
+  background-color: #7a95be; /* Azul muy claro para el fondo de la tarjeta */
+  border: 1px solid transparent; /* Borde inicial transparente */
+  transition: transform 0.3s, border-color 0.3s, background-color 0.3s; /* Transiciones suaves */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra ligera para la tarjeta */
+}
+
+.my-card:hover {
+  transform: scale(1.05); /* Escala un poco más grande al pasar el ratón */
+  border-color: #007BFF; /* Azul brillante */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para dar efecto de elevación */
+}

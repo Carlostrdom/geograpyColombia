@@ -180,47 +180,43 @@ let displayDepartments = (departments) => {
         let imageUrl = imageObj ? imageObj.img : "./assets/recursos-img/colombia.jpg";
 
         return `
-            <div class="card">
-                <img src="${imageUrl}" class="card-img-top" alt="${department.name}" style="object-fit: cover;"/>
-                <div class="card-body">
-                    <h5 class="card-title">Departamento: ${department.name}</h5>
-                    <p>Municipios: ${department.municipalities}</p>
-                    <p>Población: ${department.population}</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <p>Más detalles</p>
-                        <a href="./details.html?id=${department.id}" class="btn btn-primary">Detalles</a>
+                <div class="card my-card">
+                    <img src="${imageUrl}" class="card-img-top" alt="${department.name}" style="object-fit: cover;"/>
+                    <div class="card-body bg-primary-subtle">
+                        <h5 class="card-title">Departamento: ${department.name}</h5>
+                        <p>Municipios: ${department.municipalities}</p>
+                        <p>Población: ${department.population}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <p>Más detalles</p>
+                            <a href="./details.html?id=${department.id}" class="btn btn-primary">Detalles</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        `;
-    })
+            `;
+    });
 
     departmentsContainer.innerHTML = tarjetasHTML != "" ? tarjetasHTML : "<p class=' text-center text-white col-4 bg-dark bg-opacity-75 rounded-3 mb-4'>No se encontraron departamentos</p>";
 };
-// Maneja el evento de entrada del filtro de nombre
+
 filterNameInput.addEventListener("input", () => {
     applyFilters();
 });
 
-// Maneja el evento de cambio del filtro de población
 filterPopulationSelect.addEventListener("change", () => {
     applyFilters();
 });
 
-// Función para aplicar los filtros combinados
 let applyFilters = () => {
     let name = filterNameInput.value.toLowerCase();
     let populationAmount = filterPopulationSelect.value;
     let filteredDepartments = departmentsData;
 
-    // Aplica el filtro de nombre
     if (name) {
         filteredDepartments = filteredDepartments.filter(department =>
             department.name.toLowerCase().includes(name)
         );
     }
 
-    // Aplica el filtro de población
     if (populationAmount) {
         filteredDepartments = filteredDepartments.filter(department => {
             let population = department.population;
@@ -235,6 +231,5 @@ let applyFilters = () => {
         });
     }
 
-    // Muestra los departamentos filtrados
     displayDepartments(filteredDepartments);
 };

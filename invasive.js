@@ -19,12 +19,14 @@ fetch(apiURL)
                 <td class="text-center border border-dark justify-content-center"><img src="${especie.urlImage}" alt="${especie.name}"  style="width: 80px; height: auto;"></td>
                  
                 `;
-
-            if (especie.riskLevel === 1) {
+            if (especie.riskLevel === 0) {
+                tabla.classList.add("risk-level-0");
+            } else if (especie.riskLevel === 1) {
                 tabla.classList.add("risk-level-1");
             } else if (especie.riskLevel === 2) {
                 tabla.classList.add("risk-level-2");
             }
+
 
             tbody.appendChild(tabla);
         }
